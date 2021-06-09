@@ -4,13 +4,28 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./index.css">
+  <script src="./checkout/index.js"></script>
   <title>DOM Exercise</title>
 </head>
 <body>
-  <h1 id="hello">Hola Senpai ¿como estan todos?</h1>
-  <h2>Probando GIT</h2>
-  <h3>Hola soy julian</h3>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nemo ipsa numquam ipsum commodi, hic nostrum tempora. Totam eaque assumenda nostrum at. Labore, similique est natus maiores aut aliquam harum iusto!</p>
+  <div class="container mx-auto flex h-screen w-screen">
+    <div class="bg-yellow-300 w-1/2">
+      <div>
+        <h1>Crear producto</h1>
+        <input class="m-2 p-2 w-full" id="name_product" type="text" placeholder="Nombre">
+        <input class="m-2 p-2 w-full" id="price_product" type="text" placeholder="Precio">
+        <button class="bg-blue-500 text-white m-2 p-2" id="btnCreateProduct">Crear producto</button>
+      </div>
+      <hr>
+      <div id="contendor_productos">
+        
+      </div>
+    </div>
+    <div class="bg-red-300 w-1/2">
+      Mi carrito
+    </div>
+  </div>
 </body>
 </html>
