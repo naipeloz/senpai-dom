@@ -26,6 +26,11 @@ function createItemCart(name, price) {
   product.appendChild(productBtn);
   //Agregar el producto al contenedor de productos
   contendorProductos.appendChild(product);
+  //AGREGO FUNCIONALIDAD CLICK BTN AGREGAR
+  clickAddCarrito(productBtn, product);
+  
+
+
 }
 
 function botonCrearProducto () {
@@ -35,6 +40,16 @@ function botonCrearProducto () {
     const price = document.getElementById("price_product").value;
     createItemCart(name, price);
   });
+}
+
+function clickAddCarrito (itemBtn,product){
+  //LE AGREGO LA FUNCIONALIDAD DE CLICK AL BOTON LUEGO DE AGREGARLO AL DOM
+  itemBtn.addEventListener('click',function(){
+    const tmpProduct = product.cloneNode(true);
+    console.log(tmpProduct);
+    const contentCarrito = document.getElementById('content-carrito');
+    contentCarrito.appendChild(tmpProduct);
+  })  
 }
 
 function init () {
