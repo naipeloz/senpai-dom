@@ -1,13 +1,27 @@
 const list = [];
+let listaClon = [];
 let index = 0;
 
 function addTask() {
   const task = new Task(index);
   list.push(task);
   index++;
-  renderTasks();
+  renderTasks(list);
   eventRemoveTask();
   eventSaveTask();
+}
+
+function search(){
+  let valorABuscar = document.getElementById("search_input_task").value;
+  console.log(valorABuscar);
+
+  if (valorABuscar === ""){
+    renderTasks(list);
+  }
+  else{
+    listaClon = list.filter((item)=> item.value === valorABuscar);
+    renderTasks(listaClon);
+  }
 }
 
 saveTask = (e) => {
@@ -33,10 +47,10 @@ function eventSaveTask() {
   }
 }
 
-function renderTasks() {
+function renderTasks(lista) {
   const taskContainer = document.getElementById('task_container');
   taskContainer.innerHTML = '';
-  list.forEach((task) => {
+  lista.forEach((task) => {
     const taskDOM = task.renderTask();
     taskContainer.appendChild(taskDOM);
   })
