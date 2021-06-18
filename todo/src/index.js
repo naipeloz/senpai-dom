@@ -1,4 +1,4 @@
-const list = [];
+let list = [];
 let listaClon = [];
 let index = 0;
 
@@ -9,6 +9,7 @@ function addTask() {
   renderTasks(list);
   eventRemoveTask();
   eventSaveTask();
+  saveTasksLocalStorage(list);
 }
 
 function search(){
@@ -25,12 +26,32 @@ function search(){
 }
 
 saveTask = (e) => {
-  console.log("SAVE: ", e)
-
+  const idParent = e.target.getAttribute('data-parent');
+  const newValueTask = document.querySelectorAll(`#${idParent} input`)
+  console.log('newValueTask:', newValueTask[0].value);
 }
 
-removeTask = (e) => {
-  console.log("REMOVE: ", e)
+function removeTask (e) {
+  const id = this.getAttribute("data-parent");
+
+    list.forEach((task) => {
+      if (task.id==id) {
+      list.splice(task.index);
+    
+    }
+  })
+
+
+
+  const elemento = document.getElementById (id);
+
+  this.removeEventListener("click",removeTask,false);
+
+  const btnsActualizar = elemento.getElementsByClassName ("save-btn");
+  btnsActualizar[0].removeEventListener("click",saveTask,false);
+
+  elemento.remove();
+
 }
 
 function eventRemoveTask() {
@@ -56,8 +77,15 @@ function renderTasks(lista) {
   })
 }
 
+function initFromLocalStorage () {
+  list = getTasksLocalStorage();
+  index = getLastIndex();
+  renderTasks();
+}
+
 function init() {
   window.onload = () => {
+    initFromLocalStorage();
   }
 }
 
