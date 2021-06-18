@@ -1,4 +1,4 @@
-const list = [];
+let list = [];
 let index = 0;
 
 function addTask() {
@@ -8,11 +8,13 @@ function addTask() {
   renderTasks();
   eventRemoveTask();
   eventSaveTask();
+  saveTasksLocalStorage(list);
 }
 
 saveTask = (e) => {
-  console.log("SAVE: ", e)
-
+  const idParent = e.target.getAttribute('data-parent');
+  const newValueTask = document.querySelectorAll(`#${idParent} input`)
+  console.log('newValueTask:', newValueTask[0].value);
 }
 
 function removeTask (e) {
@@ -61,8 +63,15 @@ function renderTasks() {
   })
 }
 
+function initFromLocalStorage () {
+  list = getTasksLocalStorage();
+  index = getLastIndex();
+  renderTasks();
+}
+
 function init() {
   window.onload = () => {
+    initFromLocalStorage();
   }
 }
 
