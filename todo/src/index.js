@@ -14,8 +14,6 @@ function addTask() {
 
 function search(){
   let valorABuscar = document.getElementById("search_input_task").value;
-  console.log(valorABuscar);
-
   if (valorABuscar === ""){
     renderTasks(list);
   }
