@@ -15,8 +15,27 @@ saveTask = (e) => {
 
 }
 
-removeTask = (e) => {
-  console.log("REMOVE: ", e)
+function removeTask (e) {
+  const id = this.getAttribute("data-parent");
+
+    list.forEach((task) => {
+      if (task.id==id) {
+      list.splice(task.index);
+    
+    }
+  })
+
+
+
+  const elemento = document.getElementById (id);
+
+  this.removeEventListener("click",removeTask,false);
+
+  const btnsActualizar = elemento.getElementsByClassName ("save-btn");
+  btnsActualizar[0].removeEventListener("click",saveTask,false);
+
+  elemento.remove();
+
 }
 
 function eventRemoveTask() {
