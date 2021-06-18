@@ -1,8 +1,8 @@
 class Task {
-  constructor (index) {
+  constructor (index, value = '') {
     this.index = index;
     this.id = `task-${index}`;
-    this.value = '';
+    this.value = value;
   }
 
   renderTask () {
